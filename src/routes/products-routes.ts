@@ -5,7 +5,10 @@ const productsRoutes = Router();
 //instancia o controller
 const productsController = new ProductController();
 
-//rota
+//rota listar todos os produtos
 productsRoutes.get("/", productsController.index);
+
+//rota para criar um novo produto
+productsRoutes.post("/", productsController.create);
 
 export { productsRoutes };
