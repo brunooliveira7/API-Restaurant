@@ -41,6 +41,35 @@ class ProductController {
       next(error);
     }
   }
+
+  //função para atualizar um produto
+  async update(request: Request, response: Response, next: NextFunction) {
+    try {
+      //validar o id - só números, converte em inteiro
+      const id = z
+        .string()
+        .transform((value) => Number(value))
+        .refine((value) => !isNaN(value), { message: "id must be a number" })
+        .parse(request.params.id);
+
+      //validar o corpo da requisição
+      const bodySchema = z.object({
+        name: z.string().trim().min(6),
+        //gt - maior que
+        price: z.number().gt(0),
+      });
+      const { name, price } = bodySchema.parse(request.body);
+
+      await knex<ProductRepository>("products")
+        //atualizar o registro, inclusive o updated_at
+        .update({ name, price, updated_at: knex.fn.now() })
+        .where({ id });
+
+      return response.json();
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 export { ProductController };

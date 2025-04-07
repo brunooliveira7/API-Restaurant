@@ -11,4 +11,7 @@ productsRoutes.get("/", productsController.index);
 //rota para criar um novo produto
 productsRoutes.post("/", productsController.create);
 
+//rota para atualizar um produto
+productsRoutes.put("/:id", productsController.update);
+
 export { productsRoutes };
