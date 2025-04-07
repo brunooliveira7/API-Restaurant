@@ -7,7 +7,15 @@ class ProductController {
   //função para listar todos os produtos
   async index(request: Request, response: Response, next: NextFunction) {
     try {
-      return response.json({ message: "Ok" });
+      //recupera o parâmetro
+      const { name } = request.query;
+
+      const products = await knex<ProductRepository>("products")
+        .select()
+        .whereLike("name", `%${name ?? ""}%`)
+        .orderBy("name");
+
+      return response.json({ products });
     } catch (error) {
       next(error);
     }
