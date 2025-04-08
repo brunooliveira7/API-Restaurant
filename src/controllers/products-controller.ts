@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { z } from "zod";
 import { knex } from "@/database/knex";
+import { AppError } from "@/utils/AppError";
 
 //funcionalidades - vai ser chamado pelo routes
 class ProductController {
@@ -60,10 +61,47 @@ class ProductController {
       });
       const { name, price } = bodySchema.parse(request.body);
 
+      const product = await knex<ProductRepository>("products")
+        .select()
+        .where({ id })
+        .first();
+
+        if (!product) {
+          throw new AppError("Product not found", 404);
+        }
+
       await knex<ProductRepository>("products")
         //atualizar o registro, inclusive o updated_at
         .update({ name, price, updated_at: knex.fn.now() })
         .where({ id });
+
+      return response.json();
+    } catch (error) {
+      next(error);
+    }
+  }
+  //função para remover um produto
+  async remove(request: Request, response: Response, next: NextFunction) {
+    try {
+      //também precisa de um id validado
+      const id = z
+        .string()
+        .transform((value) => Number(value))
+        .refine((value) => !isNaN(value), { message: "id must be a number" })
+        .parse(request.params.id);
+
+      const product = await knex<ProductRepository>("products")
+        .select()
+        .where({ id })
+        //primeiro registro encontrado
+        .first();
+
+      //se não existir, lança um erro
+      if (!product) {
+        throw new AppError("Product not found");
+      }
+
+      await knex<ProductRepository>("products").delete().where({ id });
 
       return response.json();
     } catch (error) {
