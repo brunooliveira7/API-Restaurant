@@ -8,4 +8,7 @@ const tablesSessionsController = new TableSessionsController();
 //rota criar sessão
 tablesSessionsRoutes.post("/", tablesSessionsController.create);
 
+//rota listar sessões
+tablesSessionsRoutes.get("/", tablesSessionsController.index);
+
 export { tablesSessionsRoutes };
