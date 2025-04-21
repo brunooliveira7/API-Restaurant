@@ -50,7 +50,7 @@ class ProductController {
       const id = z
         .string()
         .transform((value) => Number(value))
-        .refine((value) => !isNaN(value), { message: "id must be a number" })
+        .refine((value) => !isNaN(value), { message: "Id must be a number" })
         .parse(request.params.id);
 
       //validar o corpo da requisição
@@ -87,7 +87,7 @@ class ProductController {
       const id = z
         .string()
         .transform((value) => Number(value))
-        .refine((value) => !isNaN(value), { message: "id must be a number" })
+        .refine((value) => !isNaN(value), { message: "Id must be a number" })
         .parse(request.params.id);
 
       const product = await knex<ProductRepository>("products")

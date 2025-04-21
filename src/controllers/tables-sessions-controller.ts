@@ -21,7 +21,7 @@ class TableSessionsController {
 
       //se a mesa está aberta, não pode abrir outra sessão
       if (session && !session.closed_at) {
-        throw new AppError("Mesa já está aberta");
+        throw new AppError("Table is already open");
       }
 
       //abrir sessão de uma mesa
