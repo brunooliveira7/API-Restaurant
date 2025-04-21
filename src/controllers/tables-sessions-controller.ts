@@ -4,7 +4,7 @@ import { knex } from "@/database/knex";
 import { z } from "zod";
 
 class TableSessionsController {
-  //criar sessão de uma mesa
+  //abrir sessão de uma mesa
   async create(request: Request, response: Response, next: NextFunction) {
     try {
       const BodySchema = z.object({
@@ -44,6 +44,23 @@ class TableSessionsController {
       ).orderBy("closed_at");
 
       return response.json(sessions);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  //fechar sessão de uma mesa
+  async update(request: Request, response: Response, next: NextFunction) {
+    try {
+      const id = z
+        .string()
+        .transform((value) => Number(value))
+        .refine((value) => !isNaN(value), {
+          message: "Id must be a number",
+        })
+        .parse(request.params.id);
+
+        return response.json();
     } catch (error) {
       next(error);
     }

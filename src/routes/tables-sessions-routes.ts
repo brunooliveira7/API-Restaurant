@@ -11,4 +11,7 @@ tablesSessionsRoutes.post("/", tablesSessionsController.create);
 //rota listar sessões
 tablesSessionsRoutes.get("/", tablesSessionsController.index);
 
+//fechar sessão
+tablesSessionsRoutes.patch("/:id", tablesSessionsController.update);
+
 export { tablesSessionsRoutes };
