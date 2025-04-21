@@ -9,6 +9,6 @@ const ordersController = new OrdersController();
 ordersRoutes.post("/", ordersController.create);
 
 //listando pedidos
-ordersRoutes.get("/table-session/:id", ordersController.index);
+ordersRoutes.get("/table-session/:table_session_id", ordersController.index);
 
 export { ordersRoutes };
