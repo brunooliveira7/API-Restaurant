@@ -70,11 +70,16 @@ class OrdersController {
           "orders.product_id",
           "products.name",
           "orders.price",
-          "orders.quantity"
+          "orders.quantity",
+          //calculando o valor total do pedido
+          knex.raw("(orders.price * orders.quantity) AS Total"),
+          "orders.created_at",
+          "orders.updated_at"
         )
         //concatenando tabelas para obter os dados dos produtos
         .join("products", "products.id", "orders.product_id")
-        .where({ table_session_id });
+        .where({ table_session_id })
+        .orderBy("orders.created_at", "desc");
 
       return response.json(order);
     } catch (error) {
