@@ -86,6 +86,25 @@ class OrdersController {
       next(error);
     }
   }
-}
 
+  //resumindo pedidos - total da conta
+  async show(request: Request, response: Response, next: NextFunction) {
+    try {
+      const { table_session_id } = request.params;
+
+      const order = await knex<OrdersRepository>("orders")
+        .select(
+          //calculando o valor total do pedido - coalesce - retorna 0 se não tiver nenhum pedido
+          knex.raw("COALESCE(SUM(orders.price * orders.quantity), 0) AS Total"),
+          knex.raw("COALESCE(SUM(orders.quantity), 0) AS Quantity")
+        )
+        .where({ table_session_id })
+        .first();
+
+      return response.json(order);
+    } catch (error) {
+      next(error);
+    }
+  }
+}
 export { OrdersController };
