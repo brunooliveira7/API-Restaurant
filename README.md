@@ -1,51 +1,51 @@
-Orders (Pedidos)
+- **Orders (Pedidos)**
 
-GET Show By Table Session:
+    **GET Show By Table Session:**
 
-Exibe detalhes do pedido para uma sessão de mesa específica.
+      Exibe detalhes do pedido para uma sessão de mesa específica.
 
-GET Index By Table Session:
+    **GET Index By Table Session:**
 
-Lista todos os pedidos vinculados a uma sessão de mesa específica.
+      Lista todos os pedidos vinculados a uma sessão de mesa específica.
 
-POST Create:
+    **POST Create:**
 
-Cria um novo pedido (adiciona produtos a uma sessão de mesa).
+      Cria um novo pedido (adiciona produtos a uma sessão de mesa).
 
-Table Sessions (Sessões de Mesa)
+- **Table Sessions (Sessões de Mesa)**
 
-PATCH Close:
+    **PATCH Close:**
 
-Fecha uma sessão de mesa (encerramento do atendimento, provavelmente gera o pagamento).
+      Fecha uma sessão de mesa (encerramento do atendimento, provavelmente gera o pagamento).
 
-GET Index:
+    **GET Index:**
+  
+      Lista todas as sessões de mesa em andamento (mesas abertas).
 
-Lista todas as sessões de mesa em andamento (mesas abertas).
+    **POST Open:**
 
-POST Open:
+      Abre uma nova sessão de mesa (iniciar atendimento a uma nova mesa).
 
-Abre uma nova sessão de mesa (iniciar atendimento a uma nova mesa).
+- **Tables (Mesas)**
 
-Tables (Mesas)
+    **GET Index:**
 
-GET Index:
+      Lista todas as mesas cadastradas no sistema.
 
-Lista todas as mesas cadastradas no sistema.
+- **Products (Produtos)**
 
-Products (Produtos)
+    **DELETE Remove:**
 
-DELETE Remove:
+      Remove um produto do catálogo.
 
-Remove um produto do catálogo.
+    **PUT Update:**
 
-PUT Update:
+      Atualiza informações de um produto (nome, preço, etc.).
 
-Atualiza informações de um produto (nome, preço, etc.).
+    **POST Create:**
 
-POST Create:
+      Cadastra um novo produto no catálogo.
 
-Cadastra um novo produto no catálogo.
+    **GET Index:**
 
-GET Index:
-
-Lista todos os produtos disponíveis.
+      Lista todos os produtos disponíveis.
