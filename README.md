@@ -1,7 +1,7 @@
-<h1 align="center"> Support-tickets </h1>
+<h1 align="center"> API-Restaurant </h1>
 
 <p align="center">
-APINodejs para gerenciar ticket de suporte técnico, permitindo criar um ticket solicitando suporte, atualizar as informações do ticket, listar os tickets podendo filtrar pelo status e atualizar o status de um ticket para fechado.
+APINodejs API gerencia um sistema de pedidos para mesas em um ambiente como restaurante ou bar. Permite visualizar pedidos de uma mesa específica, listar todos os pedidos de uma sessão e criar novos pedidos. Controla o fluxo de atendimento às mesas, com rotas para abrir uma nova sessão, listar sessões em andamento e encerrar uma sessão (provavelmente gerando o pagamento). Disponibiliza a lista de todas as mesas cadastradas no sistema. E gerencia o catálogo de produtos, com rotas para cadastrar, listar, atualizar e remover produtos.
 </p>
 ### Rotas
 
