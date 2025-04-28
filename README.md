@@ -58,5 +58,5 @@ API Nodejs que gerencia um sistema de pedidos para mesas em um ambiente como res
       Lista todos os produtos disponíveis.
 
   <p align="center">
-  <img alt="License" src="https://github.com/brunooliveira7/Hair-day/blob/main/src/assets/Layout%20HairDay.png">
+  <img alt="License" src="https://github.com/brunooliveira7/API-Restaurant/blob/main/src/assets/API%20restaurant.png">
   </p>
