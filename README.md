@@ -1,62 +1,73 @@
-<h1 align="center"> API-Restaurant </h1>
+<h1 align="center">🍽️ API-Restaurant</h1>
 
 <p align="center">
-API Nodejs que gerencia um sistema de pedidos para mesas em um ambiente como restaurante ou bar. Permite visualizar pedidos de uma mesa específica, listar todos os pedidos de uma sessão e criar novos pedidos. Controla o fluxo de atendimento às mesas, com rotas para abrir uma nova sessão, listar sessões em andamento e encerrar uma sessão (provavelmente gerando o pagamento). Disponibiliza a lista de todas as mesas cadastradas no sistema. E gerencia o catálogo de produtos, com rotas para cadastrar, listar, atualizar e remover produtos.
+  API desenvolvida com Node.js para gerenciamento de pedidos em ambientes como restaurantes e bares. <br>
+  Permite controlar o fluxo de atendimento às mesas, sessões e pedidos, além de gerenciar o catálogo de produtos.
 </p>
-### Rotas
 
-- **Orders (Pedidos)**
+---
 
-    **GET Show By Table Session:**
+## ✨ Funcionalidades
 
-      Exibe detalhes do pedido para uma sessão de mesa específica.
+- Abertura e encerramento de sessões para atendimento de mesas
+- Cadastro, listagem, atualização e remoção de produtos
+- Criação e consulta de pedidos vinculados a sessões de mesas
+- Visualização de todas as mesas cadastradas
 
-    **GET Index By Table Session:**
+---
 
-      Lista todos os pedidos vinculados a uma sessão de mesa específica.
+## 📚 Endpoints
 
-    **POST Create:**
+### 📦 Pedidos (`/orders`)
 
-      Cria um novo pedido (adiciona produtos a uma sessão de mesa).
+- `GET /orders/:tableSessionId`  
+  Exibe os detalhes do pedido de uma sessão de mesa específica.
 
-- **Table Sessions (Sessões de Mesa)**
+- `GET /orders/session/:tableSessionId`  
+  Lista todos os pedidos vinculados a uma sessão de mesa.
 
-    **PATCH Close:**
+- `POST /orders`  
+  Cria um novo pedido (adiciona produtos a uma sessão de mesa).
 
-      Fecha uma sessão de mesa (encerramento do atendimento, provavelmente gera o pagamento).
+---
 
-    **GET Index:**
-  
-      Lista todas as sessões de mesa em andamento (mesas abertas).
+### 🪑 Sessões de Mesa (`/table-sessions`)
 
-    **POST Open:**
+- `POST /table-sessions`  
+  Abre uma nova sessão de mesa (início do atendimento).
 
-      Abre uma nova sessão de mesa (iniciar atendimento a uma nova mesa).
+- `GET /table-sessions`  
+  Lista todas as sessões em andamento (mesas abertas).
 
-- **Tables (Mesas)**
+- `PATCH /table-sessions/:id/close`  
+  Encerra uma sessão de mesa (finalização do atendimento/pagamento).
 
-    **GET Index:**
+---
 
-      Lista todas as mesas cadastradas no sistema.
+### 🧾 Mesas (`/tables`)
 
-- **Products (Produtos)**
+- `GET /tables`  
+  Lista todas as mesas cadastradas no sistema.
 
-    **DELETE Remove:**
+---
 
-      Remove um produto do catálogo.
+### 🛒 Produtos (`/products`)
 
-    **PUT Update:**
+- `POST /products`  
+  Cadastra um novo produto no catálogo.
 
-      Atualiza informações de um produto (nome, preço, etc.).
+- `GET /products`  
+  Lista todos os produtos disponíveis.
 
-    **POST Create:**
+- `PUT /products/:id`  
+  Atualiza as informações de um produto (nome, preço, etc.).
 
-      Cadastra um novo produto no catálogo.
+- `DELETE /products/:id`  
+  Remove um produto do catálogo.
 
-    **GET Index:**
+---
 
-      Lista todos os produtos disponíveis.
+<p align="center">
+  <img alt="API Restaurant" src="https://github.com/brunooliveira7/API-Restaurant/blob/main/src/assets/API%20restaurant.png">
+</p>
 
-  <p align="center">
-  <img alt="License" src="https://github.com/brunooliveira7/API-Restaurant/blob/main/src/assets/API%20restaurant.png">
-  </p>
